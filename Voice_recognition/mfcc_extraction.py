@@ -23,4 +23,4 @@ if __name__ == '__main__':
     fig = plt.plot(figsize=(6,10))
     plt.imshow(feature,extent=[0,13,500,0],aspect='auto')
     plt.colorbar()
-    plt.savefig('C:\Users\win\Desktop\SA1_hou.png')
+    #plt.savefig("C:\Users\win\Desktop\SA1_hou.png")

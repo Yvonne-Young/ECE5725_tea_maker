@@ -10,23 +10,23 @@ import numpy as np
 import wave
 import string 
 import time 
-from sklearn.externals import joblib
+import joblib
 
 
 #get all GMM models of speakers in dataset
 #model parameters are saved as xxx.model
 def training():
-    dataset = os.listdir("/Users/yvonneyoung/Desktop/ECE5725_tea_maker/voice_set/")
+    dataset = os.listdir("/home/pi/project/ECE5725_tea_maker/voice_set/")
     speaker_list = []
     speaker_dic = {}
     
     for name in dataset:
-        sub_dir = "/Users/yvonneyoung/Desktop/ECE5725_tea_maker/voice_set/%s"%name
+        sub_dir = "/home/pi/project/ECE5725_tea_maker/voice_set/%s"%name
         speaker_i = Speaker(name,sub_dir)
-        print name
+        print (name)
         gmm = speaker_i.get_GMM()
         joblib.dump(gmm,'%s.model'%name)
-        print "done"
+        print ("done")
         speaker_list.append(speaker_i)
         speaker_dic[name] = speaker_i
     return speaker_dic

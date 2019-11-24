@@ -10,7 +10,7 @@ import numpy as np
 import wave
 import string 
 import time 
-from sklearn.externals import joblib    
+import joblib    
 
 #test all speakers in the TEST dataset
 #calculate the recognition correctness rate
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     start = time.clock()
     scores = {}
     count = 0
-    dataset = os.listdir("/Users/yvonneyoung/Desktop/ECE5725_tea_maker/voice_set/")
+    dataset = os.listdir("/home/pi/project/ECE5725_tea_maker/voice_set/")
     
     for name in dataset:
         utter_feature = []

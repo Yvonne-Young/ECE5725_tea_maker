@@ -1,7 +1,7 @@
 #==============================================================================#
 # file: speaker.py
 # author: Yifan Yang
-# updated: 12.24/2019
+# updated: 11/24/2019
 #==============================================================================#
 
 from sklearn.preprocessing import Normalizer
@@ -20,7 +20,7 @@ class Speaker(object):
     def get_mfcc(self):
         mfcc = []
         files = os.listdir(self.wave_file)
-        print files
+        print (files)
         waves = []
         for i in files:
             if os.path.splitext(i)[1] == ".wav":
@@ -30,7 +30,7 @@ class Speaker(object):
             mfcc_file = mfcc_extraction(fp)
             mfcc.extend(mfcc_file.T)
             self.feature = mfcc
-        print np.shape(mfcc)
+        print (np.shape(mfcc))
         return mfcc
 
     def get_GMM(self):
@@ -38,7 +38,7 @@ class Speaker(object):
         K = 4
         mfcc = Normalizer().fit_transform(mfcc)
         estimator = GaussianMixture(n_components=K,covariance_type="full",max_iter=200,random_state=0,tol=1e-5)
-        print "building GMM model..."
+        print ("building GMM model...")
         estimator.fit(mfcc)
         self.model = estimator
         return estimator
